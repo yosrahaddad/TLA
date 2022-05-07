@@ -1,0 +1,22 @@
+
+%{
+#include "lexique. tab.h"
+%option noyywrap
+ntier [0-9]*
+var [a-zA-Z]*
+msg [a-zA-Z] * [=] * [%]*[a-z]*["]
+"main" return MAIN;
+"printf" return afficher ;
+"int" return type;
+"}" return accoladeF;
+"{" return accolafel;
+"("return paretho;
+")" return parethF;
+"=" return egale;
+{entier} return entier;
+","return virgule;
+";" return PV;
+{msg} return msg;
+{var}return var;
+"T"\n"|"\t" {}
+%%

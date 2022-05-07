@@ -1,0 +1,45 @@
+
+%{
+#include<stdio.h>
+#include<stdlib.h>
+void yyerror(char* s);
+%}
+%union{
+char* texte;
+}
+%token MAIN
+%token afficher
+%token accolade
+%token accolafell
+%token paretho
+%token pareth
+%token id
+%token egale
+token entier
+%token var
+stoken virgulel
+%token PV
+%token msg
+%token type
+%type<texte> affichage
+%type<texte> affectation
+%start s
+S: MAIN paretho var parethf operation accoladeF{
+printf("c'est le programme principale");
+};
+operation: affectation { printf("\n affectation");}
+:
+affichage{ printf ("\n affichage ");
+};
+affichage: afficher paretho msg virgule parethF PV {
+printf("\n afficher la valeur d une variable"); };
+affectation: type var egale entier PV{
+printf("\n affecter un entier a une variable"); };
+void yyerror(char* s) {
+printf("\n erreur ici\n"); }
+void main() {
+yyparse();
+if (lyyparse()) {
+printf("\n FIN ");
+}
+}
